@@ -25,7 +25,6 @@ function SchedulingController(SchedulingService, $log){
 	getAllJobs();
 	
 	function getAllJobs() {
-		console.log("WRONG")
 		SchedulingService.getAllJobs()
 		.then(
 			function(e) {

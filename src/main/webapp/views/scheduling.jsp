@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <html>
   <head>  
-    <title>AngularJS $http Example</title>  
+    <title>ScheduleNow Scheduler</title>  
     <style>
       .username.ng-valid {
           background-color: lightgreen;
@@ -59,7 +59,7 @@
                           <div class="form-group col-md-12">
                               <label class="col-md-2 control-lable" for="address">Address</label>
                               <div class="col-md-7">
-                                  <input type="text" data-ng-model="ctrl.job.address" id="address" class="form-control input-sm" placeholder="Enter the Address. [This field is validation free]"/>
+                                  <input type="text" data-ng-model="ctrl.job.address" id="address" class="form-control input-sm" placeholder="Enter the Address"/>
                               </div>
                           </div>
                       </div>
@@ -68,9 +68,8 @@
                           <div class="form-group col-md-12">
                               <label class="col-md-2 control-lable" for="email">Email</label>
                               <div class="col-md-7">
-                                  <input type="email" data-ng-model="ctrl.job.email" id="email" class="email form-control input-sm" placeholder="Enter the Email" required/>
+                                  <input type="email" data-ng-model="ctrl.job.email" id="email" class="email form-control input-sm" placeholder="Enter the Email"/>
                                   <div class="has-error" data-ng-show="myForm.$dirty">
-                                      <span data-ng-show="myForm.email.$error.required">This is a required field</span>
                                       <span data-ng-show="myForm.email.$invalid">This field is invalid </span>
                                   </div>
                               </div>
@@ -83,7 +82,7 @@
                               <div class="col-md-7">
                                   <input type="text" data-ng-model="ctrl.job.phone" id="phone" class="phone form-control input-sm" placeholder="Enter the Phone Number" required/>
                                   <div class="has-error" data-ng-show="myForm.$dirty">
-                                      <span data-ng-show="myForm.email.$invalid">This field is invalid </span>
+                           				<span data-ng-show="myForm.phone.$error.required">This is a required field.</span>
                                   </div>
                               </div>
                           </div>
@@ -95,7 +94,7 @@
                               <div class="col-md-7">
                                   <input type="text" data-ng-model="ctrl.job.description" id="description" class="description form-control input-sm" placeholder="Enter the Description" required/>
                                   <div class="has-error" data-ng-show="myForm.$dirty">
-                                      <span data-ng-show="myForm.email.$invalid">This field is invalid </span>
+                                      <span data-ng-show="myForm.description.$error.required">This is a required field. </span>
                                   </div>
                               </div>
                           </div>

@@ -11,18 +11,15 @@ Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 		<title>ScheduleNow</title>
 	</head>
 	<body>
-		<h1>Welcome to ScheduleNow!</h1>
-		<span>Task 1: Develop a new Web Application </span>
-		
 		<div class="topnav">
 			<a class="active" href="/ScheduleNow/">Home</a>
 			<a href="/ScheduleNow/scheduling/">Scheduling</a>
 		</div>
 		
-		<form action="add">
-			<input type="text" name="t1"><br>
-			<input type="text" name="t2"><br>
-			<input type="submit">
-		</form>
+		<h1>Welcome to ScheduleNow!</h1>
+		<span>Task 1: Develop a new Web Application </span>
+		
+		
+		
 	</body>
 </html>
