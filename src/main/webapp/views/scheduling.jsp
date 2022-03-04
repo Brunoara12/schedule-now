@@ -28,27 +28,27 @@
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
      <link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
   </head>
-  <body ng-app="myApp" class="ng-cloak">
+  <body data-ng-app="myApp" class="ng-cloak">
   	<div class="topnav">
 		<a class="active" href="/ScheduleNow/">Home</a>
 		<a href="/ScheduleNow/scheduling/">Scheduling</a>
 	</div>
 	
-    <div class="generic-container" ng-controller="SchedulingController as ctrl">
+    <div class="generic-container" data-ng-controller="SchedulingController as ctrl">
           <div class="panel panel-default">
               <div class="panel-heading"><span class="lead">Work Scheduling Form </span></div>
               <div class="formcontainer">
-                  <form ng-submit="ctrl.submit()" name="myForm" class="form-horizontal">
-                      <input type="hidden" ng-model="ctrl.customer.id" />
+                  <form data-ng-submit="ctrl.submit()" name="myForm" class="form-horizontal">
+                      <input type="hidden" data-ng-model="ctrl.job.id" />
                       <div class="row">
                           <div class="form-group col-md-12">
                               <label class="col-md-2 control-lable" for="customer">Customer Name</label>
                               <div class="col-md-7">
-                                  <input type="text" ng-model="ctrl.customer.name" id="customer" class="customer-name form-control input-sm" placeholder="Enter customer's name" required ng-minlength="3"/>
-                                  <div class="has-error" ng-show="myForm.$dirty">
-                                      <span ng-show="myForm.customer.$error.required">This is a required field.</span>
-                                      <span ng-show="myForm.customer.$error.minlength">Minimum length required is 3.</span>
-                                      <span ng-show="myForm.customer.$invalid">This field is invalid </span>
+                                  <input type="text" data-ng-model="ctrl.job.customerName" id="customer" class="customer-name form-control input-sm" placeholder="Enter customer's name" required data-ng-minlength="3"/>
+                                  <div class="has-error" data-ng-show="myForm.$dirty">
+                                      <span data-ng-show="myForm.customer.$error.required">This is a required field.</span>
+                                      <span data-ng-show="myForm.customer.$error.minlength">Minimum length required is 3.</span>
+                                      <span data-ng-show="myForm.customer.$invalid">This field is invalid </span>
                                   </div>
                               </div>
                           </div>
@@ -59,7 +59,7 @@
                           <div class="form-group col-md-12">
                               <label class="col-md-2 control-lable" for="address">Address</label>
                               <div class="col-md-7">
-                                  <input type="text" ng-model="ctrl.customer.address" id="address" class="form-control input-sm" placeholder="Enter the Address. [This field is validation free]"/>
+                                  <input type="text" data-ng-model="ctrl.job.address" id="address" class="form-control input-sm" placeholder="Enter the Address. [This field is validation free]"/>
                               </div>
                           </div>
                       </div>
@@ -68,10 +68,10 @@
                           <div class="form-group col-md-12">
                               <label class="col-md-2 control-lable" for="email">Email</label>
                               <div class="col-md-7">
-                                  <input type="email" ng-model="ctrl.customer.email" id="email" class="email form-control input-sm" placeholder="Enter the Email" required/>
-                                  <div class="has-error" ng-show="myForm.$dirty">
-                                      <span ng-show="myForm.email.$error.required">This is a required field</span>
-                                      <span ng-show="myForm.email.$invalid">This field is invalid </span>
+                                  <input type="email" data-ng-model="ctrl.job.email" id="email" class="email form-control input-sm" placeholder="Enter the Email" required/>
+                                  <div class="has-error" data-ng-show="myForm.$dirty">
+                                      <span data-ng-show="myForm.email.$error.required">This is a required field</span>
+                                      <span data-ng-show="myForm.email.$invalid">This field is invalid </span>
                                   </div>
                               </div>
                           </div>
@@ -81,9 +81,9 @@
                           <div class="form-group col-md-12">
                               <label class="col-md-2 control-lable" for="phone">Phone</label>
                               <div class="col-md-7">
-                                  <input type="text" ng-model="ctrl.customer.phone" id="phone" class="phone form-control input-sm" placeholder="Enter the Phone Number" required/>
-                                  <div class="has-error" ng-show="myForm.$dirty">
-                                      <span ng-show="myForm.email.$invalid">This field is invalid </span>
+                                  <input type="text" data-ng-model="ctrl.job.phone" id="phone" class="phone form-control input-sm" placeholder="Enter the Phone Number" required/>
+                                  <div class="has-error" data-ng-show="myForm.$dirty">
+                                      <span data-ng-show="myForm.email.$invalid">This field is invalid </span>
                                   </div>
                               </div>
                           </div>
@@ -93,9 +93,9 @@
                           <div class="form-group col-md-12">
                               <label class="col-md-2 control-lable" for="description">Description</label>
                               <div class="col-md-7">
-                                  <input type="text" ng-model="ctrl.customer.description" id="description" class="description form-control input-sm" placeholder="Enter the Description" required/>
-                                  <div class="has-error" ng-show="myForm.$dirty">
-                                      <span ng-show="myForm.email.$invalid">This field is invalid </span>
+                                  <input type="text" data-ng-model="ctrl.job.description" id="description" class="description form-control input-sm" placeholder="Enter the Description" required/>
+                                  <div class="has-error" data-ng-show="myForm.$dirty">
+                                      <span data-ng-show="myForm.email.$invalid">This field is invalid </span>
                                   </div>
                               </div>
                           </div>
@@ -103,8 +103,8 @@
                       
                       <div class="row">
                           <div class="form-actions floatRight">
-                              <input type="submit"  value="{{!ctrl.user.id ? 'Add' : 'Update'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid">
-                              <button type="button" ng-click="ctrl.reset()" class="btn btn-warning btn-sm" ng-disabled="myForm.$pristine">Reset Form</button>
+                              <input type="submit"  value="{{!ctrl.job.id ? 'Add' : 'Update'}}" class="btn btn-primary btn-sm" data-ng-disabled="myForm.$invalid">
+                              <button type="button" data-ng-click="ctrl.reset()" class="btn btn-warning btn-sm" data-ng-disabled="myForm.$pristine">Reset Form</button>
                           </div>
                       </div>
                   </form>
@@ -127,16 +127,16 @@
                           </tr>
                       </thead>
                       <tbody>
-                          <tr ng-repeat="u in ctrl.jobs">
-                              <td><span ng-bind="u.id"></span></td>
-                              <td><span ng-bind="u.username"></span></td>
-                              <td><span ng-bind="u.address"></span></td>
-                              <td><span ng-bind="u.email"></span></td>
-                              <td><span ng-bind="u.phone"></span></td>
-                              <td><span ng-bind="u.description"></span></td>
+                          <tr data-ng-repeat="j in ctrl.jobs">
+                              <td><span data-ng-bind="j.id"></span></td>
+                              <td><span data-ng-bind="j.customerName"></span></td>
+                              <td><span data-ng-bind="j.address"></span></td>
+                              <td><span data-ng-bind="j.email"></span></td>
+                              <td><span data-ng-bind="j.phone"></span></td>
+                              <td><span data-ng-bind="j.description"></span></td>
                            
                               <td>
-                              <button type="button" ng-click="ctrl.edit(u.id)" class="btn btn-success custom-width">Edit</button>  <button type="button" ng-click="ctrl.remove(u.id)" class="btn btn-danger custom-width">Remove</button>
+                              <button type="button" data-ng-click="ctrl.update(j.id)" class="btn btn-success custom-width">Edit</button>  <button type="button" data-ng-click="ctrl.deleteJob(j.id)" class="btn btn-danger custom-width">Remove</button>
                               </td>
                           </tr>
                       </tbody>
