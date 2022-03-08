@@ -54,11 +54,11 @@ public class SchedulingController {
 	}
 	
 	@PutMapping("/jobs/{id}")
-	public ResponseEntity<Job> updateJob(@PathVariable Long id, @RequestBody Job job) {
+	public ResponseEntity<?> updateJob(@PathVariable Long id, @RequestBody Job job) {
 		Job newJob = jobService.update(id, job);
 		
 		return newJob != null ? new ResponseEntity<Job>(job, HttpStatus.OK) : 
-			new ResponseEntity<Job>(HttpStatus.NOT_MODIFIED);
+			new ResponseEntity<Job>(HttpStatus.NO_CONTENT);
 	}
  
 	@DeleteMapping("/jobs/{id}")

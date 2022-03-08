@@ -36,7 +36,7 @@
 	
     <div class="generic-container" data-ng-controller="SchedulingController as ctrl">
           <div class="panel panel-default">
-              <div class="panel-heading"><span class="lead">Work Scheduling Form </span></div>
+              <div class="panel-heading"><span class="lead">Welcome ${username}, Work Scheduling Form </span></div>
               <div class="formcontainer">
                   <form data-ng-submit="ctrl.submit()" name="myForm" class="form-horizontal">
                       <input type="hidden" data-ng-model="ctrl.job.id" />
