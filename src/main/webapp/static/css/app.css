@@ -19,3 +19,7 @@ label > span {
 	position: absolute;
 	left: 0;
 }
+
+.btn-success, .btn-danger {
+	color: #000;
+}

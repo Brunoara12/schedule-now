@@ -81,12 +81,6 @@ public class Job {
 		this.description = description;
 	}
 
-	@Override
-	public String toString() {
-		return "Job [id=" + id + ", customerName=" + customerName + ", address=" + address + ", email=" + email
-				+ ", phone=" + phone + ", date=" + date + ", description=" + description + "]";
-	}
-	
-	
+
 	
 }

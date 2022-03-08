@@ -13,8 +13,7 @@ SchedulingController.$inject = ['SchedulingService','$log']
 function SchedulingController(SchedulingService, $log){
 	
 	var vm = this;
-	vm.job = {id: null, customerName: '', address: '', email: '',
-		phone: '', data: '', description: ''};
+	vm.job = {};
 	vm.jobs = [];
 	
 	vm.submit = submit;
@@ -27,8 +26,8 @@ function SchedulingController(SchedulingService, $log){
 	function getAllJobs() {
 		SchedulingService.getAllJobs()
 		.then(
-			function(e) {
-				vm.jobs = e;
+			function(data) {
+				vm.jobs = data;
 			},
 			function(err){
 				$log.error('Error while fetching Jobs ', err);
@@ -68,15 +67,9 @@ function SchedulingController(SchedulingService, $log){
 			)
 	}
 	
-	function update(id){
-		$log.log("job: " + id + " will be edited")
-		for(let i = 0; i < vm.jobs.length; i++){
-			if(vm.jobs[i].id === id) {
-				vm.job = angular.copy(vm.jobs[i])
-				break;
-			}
-		}
-		
+	function update(job){
+		$log.log("job: " + angular.copy(job).id + " will be edited")
+		vm.job = angular.copy(job);
 	}
 	
 	function deleteJob(id) {

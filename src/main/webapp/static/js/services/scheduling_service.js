@@ -11,7 +11,7 @@
 SchedulingService.$inject = ['$http', '$log']
 
 function SchedulingService($http, $log) {
-	var REST_SERVICE_URI = 'http://localhost:8080/ScheduleNow/scheduling/jobs/';
+	var REST_SERVICE_URI = 'jobs/';
 
 	var factory = {
 		getAllJobs: getAllJobs,
