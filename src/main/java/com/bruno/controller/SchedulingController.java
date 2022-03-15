@@ -48,7 +48,7 @@ public class SchedulingController {
 	
 	@PostMapping("/jobs")
 	public ResponseEntity<Job> addJob(@RequestBody Job job) {
-		jobService.addJob(job);
+		jobService.saveJob(job);
 		
 		return new ResponseEntity<Job>(job, HttpStatus.CREATED);
 	}

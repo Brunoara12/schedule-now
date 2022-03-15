@@ -46,7 +46,7 @@ function SchedulingController(SchedulingService, $log){
 	}
 	
 	function submit() {
-		if(vm.job.id === null) {
+		if(vm.job.id === undefined) {
 			$log.log('Adding New Job', vm.job);
 			addJob(vm.job);
 		} else {

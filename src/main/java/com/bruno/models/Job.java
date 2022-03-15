@@ -1,13 +1,35 @@
 package com.bruno.models;
 
+import java.sql.Timestamp;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "JOB")
 public class Job {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID")
 	private Long id;
+	
+	@Column(name = "CUSTOMER_NAME", nullable = false)
 	private String customerName;
+	
+	@Column(name = "ADDRESS", nullable = false)
 	private String address;
+	@Column(name = "EMAIL", nullable = false)
 	private String email;
+	@Column(name="PHONE", nullable = false)
 	private String phone;
-	private String date;
+	@Column(name = "SCHEDULED_DATE_TIME", nullable = false)
+	private Timestamp dateTime;
+	@Column(name = "DESCRIPTION",  nullable = false)
 	private String description;
 	
 	public Job() {
@@ -15,13 +37,13 @@ public class Job {
 	}
 	
 	public Job(Long id, String customerName, String address, String email, String phone, 
-			String date, String description) {
+			Timestamp date, String description) {
 		this.id = id;
 		this.customerName = customerName;
 		this.address = address;
 		this.email = email;
 		this.phone = phone;
-		this.date = date;
+		this.dateTime = date;
 		this.description = description;
 	}
 	
@@ -65,12 +87,12 @@ public class Job {
 		this.phone = phone;
 	}
 
-	public String getDate() {
-		return date;
+	public Timestamp getDate() {
+		return dateTime;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
+	public void setDate(Timestamp date) {
+		this.dateTime = date;
 	}
 
 	public String getDescription() {
