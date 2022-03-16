@@ -28,7 +28,7 @@ public class HibernationConfiguration {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan(new String[] { "com.bruno.models" });
+        sessionFactory.setPackagesToScan("com.bruno.models");
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
      }

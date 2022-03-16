@@ -50,14 +50,14 @@ public class SchedulingController {
 	
 	@PostMapping("/jobs")
 	public ResponseEntity<Job> addJob(@RequestBody JobDto jobDto) {
-		jobDto.date = jobDto.date.replace('T', ' ').substring(0,19);
+		jobDto.setDate(jobDto.getDate().replace('T', ' ').substring(0,19));
 		Job job = new Job();
-		job.setAddress(jobDto.address);
-		job.setCustomerName(jobDto.customerName);
-		job.setDate(Timestamp.valueOf(jobDto.date));
-		job.setDescription(jobDto.description);
-		job.setEmail(jobDto.email != null? jobDto.email : "");
-		job.setPhone(jobDto.phone);
+		job.setAddress(jobDto.getAddress());
+		job.setCustomerName(jobDto.getCustomerName());
+		job.setDate(Timestamp.valueOf(jobDto.getDate()));
+		job.setDescription(jobDto.getDescription());
+		job.setEmail(jobDto.getEmail() != null? jobDto.getEmail() : "");
+		job.setPhone(jobDto.getPhone());
 		jobService.saveJob(job);
 		
 		return new ResponseEntity<Job>(job, HttpStatus.CREATED);
@@ -67,8 +67,8 @@ public class SchedulingController {
 	public ResponseEntity<?> updateJob(@PathVariable Long id, @RequestBody Job job) {
 		Job newJob = jobService.update(id, job);
 		
-		return newJob != null ? new ResponseEntity<Job>(job, HttpStatus.OK) : 
-			new ResponseEntity<Job>(HttpStatus.NO_CONTENT);
+		return newJob != null ? new ResponseEntity<>(job, HttpStatus.OK) : 
+			new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
  
 	@DeleteMapping("/jobs/{id}")

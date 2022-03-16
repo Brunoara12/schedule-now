@@ -9,6 +9,8 @@ import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -19,10 +21,10 @@ import com.bruno.models.Job;
 @Repository
 public class JobDaoImpl implements JobDao {
 
+	Logger logger = LoggerFactory.getLogger(JobDaoImpl.class);
+
 	@Autowired
 	SessionFactory sessionFactory;
-		
-	
 	
 	@Override
 	public Job findById(Long id) {
@@ -64,7 +66,7 @@ public class JobDaoImpl implements JobDao {
 		query.setParameter("description", job.getDescription());
 		query.setParameter("id", id);
 		int result = query.executeUpdate();
-		System.out.println("Rows affected: " + result);
+		logger.info("Rows affected: {}", result);
 		if (result == 0) {
 			return null;
 		}
@@ -79,7 +81,7 @@ public class JobDaoImpl implements JobDao {
 		Query query = getCurrentSession().createQuery(hql);
 		query.setParameter("id", id);
 		int result = query.executeUpdate();
-		System.out.println("Rows affected: " + result);
+		logger.info( "Rows affected: {}", result);
 	}
 	
 	public void persist(Object entity) {

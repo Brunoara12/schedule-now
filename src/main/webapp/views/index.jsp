@@ -23,11 +23,11 @@
 			
 			<form action="login" method="POST" modelAttribute="user">
 				<div class="formcontainer">
-					<label for="username"><span><b>Username</b></span>
+					<label for="username"><span><strong>Username</strong></span>
 						<input id="username" type="text" placeholder="Enter username" name="username" required>
 					</label>
 					
-					<label for="password"><span><b>Password</b></span>
+					<label for="password"><span><strong>Password</strong></span>
 						<input id="password" type="password" placeholder="Enter password" name="password" required>
 					</label>
 					
