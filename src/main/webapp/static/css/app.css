@@ -1,0 +1,25 @@
+
+.has-error{
+	color:red;
+}
+
+.formcontainer{
+	border: 1px solid #000;
+	padding: 20px;
+	margin-top: 10px;
+}
+
+label {
+	display: block;
+	position: relative;
+	padding-left: 90px;
+}
+
+label > span {
+	position: absolute;
+	left: 0;
+}
+
+.btn-success, .btn-danger {
+	color: #000;
+}
