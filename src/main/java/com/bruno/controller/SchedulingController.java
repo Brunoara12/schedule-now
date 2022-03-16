@@ -1,5 +1,6 @@
 package com.bruno.controller;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.bruno.dto.JobDto;
 import com.bruno.models.Job;
 import com.bruno.service.JobService;
 
@@ -47,7 +49,15 @@ public class SchedulingController {
 	}
 	
 	@PostMapping("/jobs")
-	public ResponseEntity<Job> addJob(@RequestBody Job job) {
+	public ResponseEntity<Job> addJob(@RequestBody JobDto jobDto) {
+		jobDto.date = jobDto.date.replace('T', ' ').substring(0,19);
+		Job job = new Job();
+		job.setAddress(jobDto.address);
+		job.setCustomerName(jobDto.customerName);
+		job.setDate(Timestamp.valueOf(jobDto.date));
+		job.setDescription(jobDto.description);
+		job.setEmail(jobDto.email != null? jobDto.email : "");
+		job.setPhone(jobDto.phone);
 		jobService.saveJob(job);
 		
 		return new ResponseEntity<Job>(job, HttpStatus.CREATED);

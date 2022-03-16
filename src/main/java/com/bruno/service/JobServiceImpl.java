@@ -1,9 +1,6 @@
 package com.bruno.service;
 
 import java.util.List;
-import java.util.OptionalInt;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import javax.transaction.Transactional;
 
@@ -16,8 +13,6 @@ import com.bruno.models.Job;
 @Service
 @Transactional
 public class JobServiceImpl implements JobService {
-
-	private static List<Job> jobs;
 	
 	@Autowired
 	private JobDao jobsRepo;
@@ -41,26 +36,13 @@ public class JobServiceImpl implements JobService {
 	}
 
 	@Override
-	public Job update(Long id, Job job) {
-		OptionalInt index = IntStream.range(0, jobs.size())
-			.filter(i -> id == jobs.get(i).getId())
-			.findFirst();
-		
-		if (index.isPresent() == false)
-			return null;
-		
-		jobs.set(index.getAsInt(), job);
-		
-		return jobs.get(index.getAsInt());
+	public Job update(Long id, Job job) {		
+		return jobsRepo.update(id,job);
 	}
 	
 	@Override
 	public void deleteJob(Long id) {
-		List<Job> newJobs = jobs.stream()
-			.filter(j -> id.equals(j.getId()))
-			.collect(Collectors.toList());
-		
-		jobs = newJobs;
+		jobsRepo.deleteById(id);
 	}
 
 	
