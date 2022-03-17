@@ -93,6 +93,18 @@
 	                      
 	                      <div class="row">
 	                          <div class="form-group col-md-12">
+	                              <label class="col-md-2 control-lable" for="date">Date</label>
+	                              <div class="col-md-7">
+	                                  <input type="date" data-ng-model="ctrl.job.date" id="date" class="date form-control input-sm" required/>
+	                                  <div class="has-error" data-ng-show="myForm.$dirty">
+	                                      <span data-ng-show="myForm.description.$error.required">This is a required field. </span>
+	                                  </div>
+	                              </div>
+	                          </div>
+	                      </div>
+	                      
+	                      <div class="row">
+	                          <div class="form-group col-md-12">
 	                              <label class="col-md-2 control-lable" for="description">Description</label>
 	                              <div class="col-md-7">
 	                                  <input type="text" data-ng-model="ctrl.job.description" id="description" class="description form-control input-sm" placeholder="Enter the Description" required/>

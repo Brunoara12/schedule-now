@@ -46,7 +46,8 @@ function SchedulingController(SchedulingService, $log){
 	}
 	
 	function submit() {
-		if(vm.job.id === null) {
+		vm.job.date = vm.job.date.getTime()
+		if(!vm.job.id) {
 			$log.log('Adding New Job', vm.job);
 			addJob(vm.job);
 		} else {
@@ -68,6 +69,7 @@ function SchedulingController(SchedulingService, $log){
 	}
 	
 	function update(job){
+		job.date = new Date(job.date)
 		$log.log("job: " + angular.copy(job).id + " will be edited")
 		vm.job = angular.copy(job);
 	}
@@ -87,7 +89,6 @@ function SchedulingController(SchedulingService, $log){
 	}
 	
 	function reset() {
-		vm.job = {id: null, customerName: '', address: '', email: '',
-		phone: '', data: '', description: ''}
+		vm.job = {}
 	}
 }

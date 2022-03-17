@@ -5,15 +5,16 @@ import java.util.List;
 import com.bruno.models.Job;
 
 
+
 public interface JobService {
 
-	public List<Job> getAllJobs();
+	void saveJob(Job job);
 	
-	public Job getById(Long id);
+	List<Job> getAllJobs();
 	
-	public void addJob(Job job);
+	Job getById(Long id);
 
-	public Job update(Long id, Job job);
+	Job update(Long id, Job job);
 
-	public void deleteJob(Long id);
+	void deleteJob(Long id);
 }

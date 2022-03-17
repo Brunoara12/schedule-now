@@ -1,5 +1,6 @@
 package com.bruno.controller;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.bruno.dto.JobDto;
 import com.bruno.models.Job;
 import com.bruno.service.JobService;
 
@@ -47,8 +49,15 @@ public class SchedulingController {
 	}
 	
 	@PostMapping("/jobs")
-	public ResponseEntity<Job> addJob(@RequestBody Job job) {
-		jobService.addJob(job);
+	public ResponseEntity<Job> addJob(@RequestBody JobDto jobDto) {
+		Job job = new Job();
+		job.setAddress(jobDto.getAddress());
+		job.setCustomerName(jobDto.getCustomerName());
+		job.setDate(new Date(jobDto.getDate()));
+		job.setDescription(jobDto.getDescription());
+		job.setEmail(jobDto.getEmail() != null? jobDto.getEmail() : "");
+		job.setPhone(jobDto.getPhone());
+		jobService.saveJob(job);
 		
 		return new ResponseEntity<Job>(job, HttpStatus.CREATED);
 	}
@@ -57,8 +66,8 @@ public class SchedulingController {
 	public ResponseEntity<?> updateJob(@PathVariable Long id, @RequestBody Job job) {
 		Job newJob = jobService.update(id, job);
 		
-		return newJob != null ? new ResponseEntity<Job>(job, HttpStatus.OK) : 
-			new ResponseEntity<Job>(HttpStatus.NO_CONTENT);
+		return newJob != null ? new ResponseEntity<>(job, HttpStatus.OK) : 
+			new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
  
 	@DeleteMapping("/jobs/{id}")

@@ -22,10 +22,7 @@ public class HomeController {
 	
 	@GetMapping("/login")
 	public ModelAndView getLoginPage() {
-		ModelAndView mv = new ModelAndView(); 
-		mv.setViewName("index");
-		
-		return mv;
+		return getHomePage();
 	}
 
 	@PostMapping("/login")
