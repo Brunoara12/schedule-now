@@ -1,6 +1,6 @@
 package com.bruno.controller;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -50,11 +50,10 @@ public class SchedulingController {
 	
 	@PostMapping("/jobs")
 	public ResponseEntity<Job> addJob(@RequestBody JobDto jobDto) {
-		jobDto.setDate(jobDto.getDate().replace('T', ' ').substring(0,19));
 		Job job = new Job();
 		job.setAddress(jobDto.getAddress());
 		job.setCustomerName(jobDto.getCustomerName());
-		job.setDate(Timestamp.valueOf(jobDto.getDate()));
+		job.setDate(new Date(jobDto.getDate()));
 		job.setDescription(jobDto.getDescription());
 		job.setEmail(jobDto.getEmail() != null? jobDto.getEmail() : "");
 		job.setPhone(jobDto.getPhone());

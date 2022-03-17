@@ -6,7 +6,7 @@ public class JobDto {
 	private String address;
 	private String email;
 	private String phone;
-	private String date;
+	private Long date;
 	private String description;
 	
 	public String getCustomerName() {
@@ -33,10 +33,10 @@ public class JobDto {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public String getDate() {
+	public Long getDate() {
 		return date;
 	}
-	public void setDate(String date) {
+	public void setDate(Long date) {
 		this.date = date;
 	}
 	public String getDescription() {

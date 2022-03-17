@@ -1,6 +1,6 @@
 package com.bruno.models;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,29 +23,15 @@ public class Job {
 	
 	@Column(name = "ADDRESS", nullable = false)
 	private String address;
-	@Column(name = "EMAIL", nullable = false)
+	@Column(name = "EMAIL")
 	private String email;
 	@Column(name="PHONE", nullable = false)
 	private String phone;
 	@Column(name = "SCHEDULED_DATE_TIME", nullable = false)
-	private Timestamp dateTime;
+	private Date dateTime;
 	@Column(name = "DESCRIPTION",  nullable = false)
 	private String description;
 	
-	public Job() {
-		this.id = 0L;
-	}
-	
-	public Job(Long id, String customerName, String address, String email, String phone, 
-			Timestamp date, String description) {
-		this.id = id;
-		this.customerName = customerName;
-		this.address = address;
-		this.email = email;
-		this.phone = phone;
-		this.dateTime = date;
-		this.description = description;
-	}
 	
 	public Long getId() {
 		return id;
@@ -87,11 +73,11 @@ public class Job {
 		this.phone = phone;
 	}
 
-	public Timestamp getDate() {
+	public Date getDate() {
 		return dateTime;
 	}
 
-	public void setDate(Timestamp date) {
+	public void setDate(Date date) {
 		this.dateTime = date;
 	}
 

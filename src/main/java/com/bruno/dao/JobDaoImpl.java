@@ -24,7 +24,7 @@ public class JobDaoImpl implements JobDao {
 	Logger logger = LoggerFactory.getLogger(JobDaoImpl.class);
 
 	@Autowired
-	SessionFactory sessionFactory;
+	private SessionFactory sessionFactory;
 	
 	@Override
 	public Job findById(Long id) {
