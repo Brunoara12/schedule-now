@@ -56,13 +56,6 @@ public class SchedulingController {
 	
 	@PostMapping("/jobs")
 	public ResponseEntity<Job> addJob(@RequestBody Job job) {
-//		Job job = new Job();
-//		job.setAddress(jobDto.getAddress());
-//		job.setCustomerName(jobDto.getCustomerName());
-//		job.setDateTime(new Date(jobDto.getDate()));
-//		job.setDescription(jobDto.getDescription());
-//		job.setEmail(jobDto.getEmail() != null? jobDto.getEmail() : "");
-//		job.setPhone(jobDto.getPhone());
 		jobService.saveJob(job);
 		
 		return new ResponseEntity<Job>(job, HttpStatus.CREATED);
@@ -71,7 +64,6 @@ public class SchedulingController {
 	@PutMapping("/jobs/{id}")
 	public ResponseEntity<?> updateJob(@PathVariable Long id, @RequestBody Job job) {
 		Job newJob = jobService.update(id, job);
-		logger.info(job.toString());
 		return newJob != null ? new ResponseEntity<>(job, HttpStatus.OK) : 
 			new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}

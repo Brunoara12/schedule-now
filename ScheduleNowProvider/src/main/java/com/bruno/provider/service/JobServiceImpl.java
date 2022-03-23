@@ -1,6 +1,7 @@
 package com.bruno.provider.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,7 +29,8 @@ public class JobServiceImpl implements JobService{
 	
 	@Override
 	public Job getById(Long id) {
-		return jobsRepo.findById(id).get();
+		Optional<Job> job = jobsRepo.findById(id);
+		return job.isPresent() ? job.get() : null;
 	}
 
 	@Override

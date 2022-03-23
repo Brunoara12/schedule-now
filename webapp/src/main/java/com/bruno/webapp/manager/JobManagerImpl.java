@@ -36,7 +36,6 @@ public class JobManagerImpl implements JobManager {
 	@Override
 	public ResponseEntity<Job> saveJob(Job job) {
 		String requestUri = serviceBaseUrl + RESOURCE_URI;
-		logger.info(requestUri);
 		return restTemplate.postForEntity(requestUri, job, Job.class);
 	}
 	
@@ -50,10 +49,6 @@ public class JobManagerImpl implements JobManager {
 		
 		List<Job> jobsL = Arrays.stream(jobs.getBody())
 				.collect(Collectors.toList());
-		
-		System.out.println(requestUri);
-		System.out.println("HELLOO");
-		System.out.println(jobs.getBody()[0].toString());
 		return new ResponseEntity<List<Job>>(jobsL, HttpStatus.OK);
 	}
 	

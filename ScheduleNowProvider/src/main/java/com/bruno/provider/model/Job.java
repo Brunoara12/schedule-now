@@ -36,11 +36,4 @@ public class Job {
 	private Date dateTime;
 	@Column(name = "DESCRIPTION",  nullable = false)
 	private String description;
-	@Override
-	public String toString() {
-		return "Job [id=" + id + ", customerName=" + customerName + ", address=" + address + ", email=" + email
-				+ ", phone=" + phone + ", dateTime=" + dateTime + ", Date Type: " + dateTime + ", description=" + description + "]";
-	}
-	
-	
 }

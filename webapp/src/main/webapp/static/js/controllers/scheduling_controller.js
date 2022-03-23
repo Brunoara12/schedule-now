@@ -61,7 +61,6 @@ function SchedulingController(SchedulingService, $log){
 	
 	function updateJob(job, id) {
 		$log.log("job: " + id + " will be updated")
-		console.log(job)
 		SchedulingService.updateJob(job, id)
 			.then(
 				getAllJobs,
@@ -72,9 +71,7 @@ function SchedulingController(SchedulingService, $log){
 	}
 	
 	function update(job){
-		console.log(job)
 		job.dateTime = new Date(job.dateTime)
-		console.log(job)
 		$log.log("job: " + angular.copy(job).id + " will be edited")
 		vm.job = angular.copy(job);
 	}
