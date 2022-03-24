@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bruno.webapp.model.User;
 
@@ -21,22 +22,18 @@ public class HomeController {
 	}
 	
 	@GetMapping("/login")
-	public ModelAndView getLoginPage() {
-		return getHomePage();
+	public String getLoginPage() {
+		return "redirect:/";
 	}
 
 	@PostMapping("/login")
-	public ModelAndView submit(@ModelAttribute User user) {
-		
-		ModelAndView mv = new ModelAndView();
+	public ModelAndView submit(@ModelAttribute User user, RedirectAttributes redirectAttributes) {
 		if(user.getUsername().length() >= 3 && user.getPassword().length() >= 5) {
-			mv.setViewName("scheduling");
-			mv.addObject("username",user.getUsername());
+			redirectAttributes.addFlashAttribute("username", user.getUsername());
+			return new ModelAndView("redirect:/scheduling/");
 		} else {
-			mv.setViewName("index");
-			mv.addObject("validation", "Username or password is not long enough");
+			redirectAttributes.addFlashAttribute("validation", "Username or password is not long enough");
+			return new ModelAndView("redirect:/");
 		}
-		
-		return mv;
 	}
 }
