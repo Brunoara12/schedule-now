@@ -39,8 +39,8 @@
 		
 	    <div class="generic-container" data-ng-controller="SchedulingController as ctrl">
 	          <div class="panel panel-default">
-	              <div class="panel-heading"><h1><span class="lead">Welcome ${username}, Work Scheduling Form</span></h1></div>
-	              <div class="formcontainer">
+	              <div id="welcome-div" class="panel-heading"><h1><span id="welcome-message" class="lead">Welcome ${username}, Work Scheduling Form</span></h1></div>
+	              <div id="job-form" class="formcontainer">
 	                  <form data-ng-submit="ctrl.submit()" name="myForm" class="form-horizontal">
 	                      <input type="hidden" data-ng-model="ctrl.job.id" />
 	                      <div class="row">
@@ -95,7 +95,7 @@
 	                          <div class="form-group col-md-12">
 	                              <label class="col-md-2 control-lable" for="dateTime">Date</label>
 	                              <div class="col-md-7">
-	                                  <input type="date" data-ng-model="ctrl.job.dateTime" id="dateTime" class="dateTime form-control input-sm" required/>
+	                                  <input type="date" data-ng-model="ctrl.job.dateTime" id="date-time" class="dateTime form-control input-sm" required/>
 	                                  <div class="has-error" data-ng-show="myForm.$dirty">
 	                                      <span data-ng-show="myForm.description.$error.required">This is a required field. </span>
 	                                  </div>
@@ -117,8 +117,8 @@
 	                      
 	                      <div class="row">
 	                          <div class="form-actions floatRight">
-	                              <input type="submit"  value="{{!ctrl.job.id ? 'Add' : 'Update'}}" class="btn btn-primary btn-sm" data-ng-disabled="myForm.$invalid">
-	                              <button type="button" data-ng-click="ctrl.reset()" class="btn btn-warning btn-sm" data-ng-disabled="myForm.$pristine">Reset Form</button>
+	                              <input type="submit" id="submit-button" value="{{!ctrl.job.id ? 'Add' : 'Update'}}" class="btn btn-primary btn-sm" data-ng-disabled="myForm.$invalid">
+	                              <button type="button" id="reset-button" data-ng-click="ctrl.reset()" class="btn btn-warning btn-sm" data-ng-disabled="myForm.$pristine">Reset Form</button>
 	                          </div>
 	                      </div>
 	                  </form>
@@ -141,16 +141,16 @@
 	                          </tr>
 	                      </thead>
 	                      <tbody>
-	                          <tr data-ng-repeat="j in ctrl.jobs">
-	                              <td><span data-ng-bind="j.id"></span></td>
-	                              <td><span data-ng-bind="j.customerName"></span></td>
-	                              <td><span data-ng-bind="j.address"></span></td>
-	                              <td><span data-ng-bind="j.email"></span></td>
-	                              <td><span data-ng-bind="j.phone"></span></td>
-	                              <td><span data-ng-bind="j.description"></span></td>
+	                          <tr id="job-list" data-ng-repeat="j in ctrl.jobs">
+	                              <td><span id="job-id" data-ng-bind="j.id"></span></td>
+	                              <td><span id="job-customer-name" data-ng-bind="j.customerName"></span></td>
+	                              <td><span id="job-address" data-ng-bind="j.address"></span></td>
+	                              <td><span id="job-email" data-ng-bind="j.email"></span></td>
+	                              <td><span id="job-phone" data-ng-bind="j.phone"></span></td>
+	                              <td><span id="job-description" data-ng-bind="j.description"></span></td>
 	                           
 	                              <td>
-	                              <button type="button" data-ng-click="ctrl.update(j)" class="btn btn-success custom-width">Edit</button>  <button type="button" data-ng-click="ctrl.deleteJob(j.id)" class="btn btn-danger custom-width">Remove</button>
+	                              <button type="button" id="edit-button" data-ng-click="ctrl.update(j)" class="btn btn-success custom-width">Edit</button>  <button type="button" id="delete-button" data-ng-click="ctrl.deleteJob(j.id)" class="btn btn-danger custom-width">Remove</button>
 	                              </td>
 	                          </tr>
 	                      </tbody>
