@@ -4,13 +4,18 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
+import java.time.Duration;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.bruno.webapp.config.SeleniumWebDriverConfig;
@@ -25,7 +30,8 @@ public class LoginTest {
 
 	private SeleniumWebDriverConfig seleniumConfig;
 	private WebDriver driver;
-	
+	private WebDriverWait wait;
+
 	@FindBy(id="username")
 	private WebElement username;
 	
@@ -48,6 +54,7 @@ public class LoginTest {
 	public void beforeSuite() {
 		seleniumConfig = new SeleniumWebDriverConfig();
 		driver = seleniumConfig.getDriver();
+		wait = new WebDriverWait(driver, Duration.ofSeconds(100));
 		PageFactory.initElements(driver, this);
 	}
 	
@@ -57,7 +64,7 @@ public class LoginTest {
 		driver.quit();
 	}
 	
-	@BeforeTest
+	@BeforeMethod
 	public void beforeTest() {
 		driver.navigate().to(BASE_URL);
 		assertEquals(driver.getCurrentUrl(), BASE_URL, "Actual url is not the same as expected");
@@ -69,6 +76,8 @@ public class LoginTest {
 	
 	@Test
 	public void givenLoginForm_whenValidUserInvalidPass_thenErrorOnLoginPage() {
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("username")));
+
 		fillOutLogin(CORRECT_USER, INCORRECT_PASS);
 		
 		assertEquals(driver.getCurrentUrl(), BASE_URL, "Actual url is not the same as expected");
