@@ -1,0 +1,13 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<div class="generic-container" *ngIf="jobs">
+    <div>
+        <span>
+            <h1 *ngIf="username" class="welcome">Welcome, {{username}}!</h1>
+            <h1 *ngIf="username == ''" class="welcome">Welcome, Stranger!</h1>
+        </span>
+        <a style="font-size:18px; float: right;" href="/login" id="homeLink">Home</a>
+    </div>
+    <app-scheduling-form [toUpdate]="toUpdate" (addJob)="addJob($event)" (updateJob)="updateJob($event)"></app-scheduling-form>
+    <app-scheduled-list [jobs]="jobs" (editJob)="editJob($event)" (deleteJob)="deleteJob($event)"></app-scheduled-list>
+</div>

@@ -1,0 +1,75 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <span class="lead">Job Scheduling Form </span>
+    </div>
+    <div id="jobForm" class="formcontainer">
+        <form [formGroup]="jobForm" (ngSubmit)="submit()" class="form-horizontal">
+
+            <input type="hidden" ng-model="job.id" />
+
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <label class="col-md-2 control-lable" for="file">Customer Name</label>
+                    <div class="col-md-7">
+                        <input type="text" id="customer-name" formControlName="customerName" name="customerName" class="form-control input-sm" placeholder="Enter customer's name" required/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <label class="col-md-2 control-lable" for="file">Address</label>
+                    <div class="col-md-7">
+                        <input type="text" id="address" formControlName="address" name="address" class="form-control input-sm" placeholder="Enter the Address" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <label class="col-md-2 control-lable" for="file">Email</label>
+                    <div class="col-md-7">
+                        <input type="email" id="email" formControlName="email" name="email" class="email form-control input-sm" placeholder="Enter the Email" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <label class="col-md-2 control-lable" for="file">Phone Number</label>
+                    <div class="col-md-7">
+                        <input type="text" id="phone-number" formControlName="phone" name="phone" class="form-control input-sm" placeholder="Enter the Phone Number" required/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <label class="col-md-2 control-lable" for="file">Date</label>
+                    <div class="col-md-7">
+                        <input type="date" id="date-time" formControlName="dateTime" name="dateTime" class="form-control input-sm" required/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <label class="col-md-2 control-lable" for="file">Description</label>
+                    <div class="col-md-7">
+                        <input type="text" id="description" formControlName="description" name="description" class="form-control input-sm" placeholder="Enter the Description" required/>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="row">
+                <div class="form-actions">
+                    <input *ngIf="!jobForm.value.id" type="submit" id="addButton" (click)=add(jobForm.value) value="Submit" class="btn btn-primary btn-sm" [disabled]="jobForm.invalid">
+                    <input *ngIf="jobForm.value.id" type="submit" id="updateButton" (click)=update(jobForm.value) value="Update" class="btn btn-primary btn-sm" [disabled]="jobForm.invalid">
+                    <button type="button" id="resetButton" (click)="reset()" class="btn btn-warning btn-sm">Reset Form</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

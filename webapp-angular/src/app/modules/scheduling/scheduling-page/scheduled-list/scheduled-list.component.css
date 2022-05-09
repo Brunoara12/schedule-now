@@ -1,0 +1,51 @@
+body,
+#mainWrapper {
+    height: 70%;
+    background-color: rgb(245, 245, 245);
+}
+
+body,
+.form-control {
+    font-size: 12px!important;
+}
+
+.floatRight {
+    float: right;
+    margin-right: 18px;
+}
+
+.has-error {
+    color: red;
+}
+
+.formcontainer {
+    background-color: #DAE8E8;
+    padding: 20px;
+}
+
+.tablecontainer {
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100%;
+}
+
+table {
+    padding: 10px;
+    width: 100%;
+    overflow: scroll;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+td {
+    word-wrap: break-word;
+}
+
+.custom-width {
+    width: 80px !important;
+}
+
+.btn-success,
+.btn-danger {
+    color: #000;
+}
