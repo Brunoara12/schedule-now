@@ -6,7 +6,7 @@ import com.bruno.provider.model.Job;
 
 public interface JobService {
 
-	void saveJob(Job job);
+	Job saveJob(Job job);
 	
 	List<Job> getAllJobs();
 	

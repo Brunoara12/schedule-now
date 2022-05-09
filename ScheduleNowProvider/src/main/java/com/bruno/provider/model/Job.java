@@ -10,17 +10,22 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "JOB")
 @Getter
 @Setter
+@NoArgsConstructor
+@ToString
 public class Job {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
+	@ToString.Exclude
 	private Long id;
 	
 	@Column(name = "CUSTOMER_NAME", nullable = false)

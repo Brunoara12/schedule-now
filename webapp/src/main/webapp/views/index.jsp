@@ -31,8 +31,8 @@
 						<input id="password" type="password" placeholder="Enter password" name="password" required>
 					</label>
 					
-					<button type="submit">Login</button>
-					<p class="has-error">${validation}</p>
+					<button id="login-button" type="submit">Login</button>
+					<p id="error-message" class="has-error">${validation}</p>
 				</div>
 			</form>
 		</main>
