@@ -1,0 +1,32 @@
+<div class="panel panel-default">
+    <div class="panel-heading"><span class="lead">List of Jobs</span></div>
+    <div class="tablecontainer">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Customer Name</th>
+                    <th>Address</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Description</th>
+                    <th width="20%"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="job-list" *ngFor="let job of jobs">
+                    <td><span id="job-id">{{job.id}}</span></td>
+                    <td><span id="job-customer-name">{{job.customerName}}</span></td>
+                    <td><span id="job-address">{{job.address}}</span></td>
+                    <td><span id="job-email">{{job.email}}</span></td>
+                    <td><span id="job-phone">{{job.phone}}</span></td>
+                    <td><span id="job-description">{{job.description}}</span></td>
+                    <td>
+                        <button type="button" id="edit-button" (click)="update(job)" class="btn btn-success custom-width">Edit</button>
+                        <button type="button" id="delete-button" (click)="delete(job.id)" class="btn btn-danger custom-width">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
