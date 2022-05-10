@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Job } from 'src/app/core/entities/Job';
 
@@ -21,12 +21,12 @@ export class SchedulingFormComponent implements OnInit {
   ngOnInit() {
     this.jobForm = this.fb.group({
       id: null,
-      customerName: ['', Validators.required],
+      customerName: new FormControl('',[ Validators.required, Validators.minLength(3)]),
       address: '',
-      email: '',
-      phone: ['', Validators.required],
-      dateTime: ['', Validators.required],
-      description: ['', Validators.required]
+      email: new FormControl('', [Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
+      phone: new FormControl('', [Validators.required]),
+      dateTime: new FormControl('', [Validators.required]),
+      description: new FormControl('', [Validators.required])
     })
   }
 

@@ -10,7 +10,7 @@ import { UserService } from 'src/app/core/services/user.service';
 })
 export class LoginPageComponent implements OnInit {
   loginForm: FormGroup
-  error: string = ""
+  error: string = ''
 
   constructor(private fb: FormBuilder, private router: Router, 
     private userService: UserService) { }
@@ -28,7 +28,7 @@ export class LoginPageComponent implements OnInit {
     if((user != null && user.length >= 3) && (pass != null && pass.length >= 5)){
       this.loginForm.reset()
       this.userService.setUser(user)
-      this.router.navigate(['/scheduling'])
+      this.router.navigate(['/scheduling/'])
     } else {
       this.loginForm.reset()
       this.error = "Username or password is not long enough"

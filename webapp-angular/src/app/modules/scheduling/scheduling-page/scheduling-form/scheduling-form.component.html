@@ -2,7 +2,7 @@
     <div class="panel-heading">
         <span class="lead">Job Scheduling Form </span>
     </div>
-    <div id="jobForm" class="formcontainer">
+    <div id="job-form" class="formcontainer">
         <form [formGroup]="jobForm" (ngSubmit)="submit()" class="form-horizontal">
 
             <input type="hidden" ng-model="job.id" />
@@ -11,7 +11,7 @@
                 <div class="form-group col-md-12">
                     <label class="col-md-2 control-lable" for="file">Customer Name</label>
                     <div class="col-md-7">
-                        <input type="text" id="customer-name" formControlName="customerName" name="customerName" class="form-control input-sm" placeholder="Enter customer's name" required/>
+                        <input type="text" id="customer" formControlName="customerName" name="customerName" class="form-control input-sm" placeholder="Enter customer's name" required minlength="3" />
                     </div>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                 <div class="form-group col-md-12">
                     <label class="col-md-2 control-lable" for="file">Phone Number</label>
                     <div class="col-md-7">
-                        <input type="text" id="phone-number" formControlName="phone" name="phone" class="form-control input-sm" placeholder="Enter the Phone Number" required/>
+                        <input type="text" id="phone" formControlName="phone" name="phone" class="form-control input-sm" placeholder="Enter the Phone Number" required/>
                     </div>
                 </div>
             </div>
@@ -65,9 +65,9 @@
 
             <div class="row">
                 <div class="form-actions">
-                    <input *ngIf="!jobForm.value.id" type="submit" id="addButton" (click)=add(jobForm.value) value="Submit" class="btn btn-primary btn-sm" [disabled]="jobForm.invalid">
-                    <input *ngIf="jobForm.value.id" type="submit" id="updateButton" (click)=update(jobForm.value) value="Update" class="btn btn-primary btn-sm" [disabled]="jobForm.invalid">
-                    <button type="button" id="resetButton" (click)="reset()" class="btn btn-warning btn-sm">Reset Form</button>
+                    <input *ngIf="!jobForm.value.id" type="submit" id="submit-button" (click)=add(jobForm.value) value="Submit" class="btn btn-primary btn-sm" [disabled]="jobForm.invalid">
+                    <input *ngIf="jobForm.value.id" type="submit" id="submit-button" (click)=update(jobForm.value) value="Update" class="btn btn-primary btn-sm" [disabled]="jobForm.invalid">
+                    <button type="button" id="reset-button" (click)="reset()" class="btn btn-warning btn-sm">Reset Form</button>
                 </div>
             </div>
         </form>

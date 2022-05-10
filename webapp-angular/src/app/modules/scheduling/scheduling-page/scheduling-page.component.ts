@@ -23,8 +23,12 @@ export class SchedulingPageComponent implements OnInit {
 
   getAllJobs() {
     this.jobService.getAllJobs().subscribe((jobs) => {
-
-      this.jobs = jobs
+      console.log(jobs)
+      if(jobs) {
+        this.jobs = jobs
+      } else {
+        this.jobs = []
+      }
       console.log(this.jobs)
     })
   }
